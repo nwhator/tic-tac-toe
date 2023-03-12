@@ -75,7 +75,10 @@ int main(void)
 {
 	int i, j, row, col, count;
 	char person1, person2, current_person;
-	char board[3][3];
+	char board[3][3] = {{'1', '2', '3'},
+		{'4', '5', '6'},
+		{'7', '8', '9'}
+	};
 
 	person1 = 'X';
 	person2 = '0';
@@ -87,7 +90,7 @@ int main(void)
 			board[i][j] = ' ';
 		}
 	}
-	draw_board();
+
 	count = 0;
 	current_person = person1;
 	while (1)
@@ -99,7 +102,7 @@ int main(void)
 		scanf("%d", &col);
 		row--;
 		col--;
-		draw_board();
+		draw_board(board);
 
 		if (row < 0 || row > 2 || col < 0 || col > 2)
 		{
@@ -113,7 +116,7 @@ int main(void)
 		}
 
 		board[row][col] = current_person;
-		draw_board();
+		draw_board(board);
 		if (check_win(current_person))
 		{
 			printf("Player %c wins!\n", current_person);
